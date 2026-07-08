@@ -1,12 +1,13 @@
 import axios from "axios";
 import { auth } from "../firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
+import { API_URL } from "../config/api";
 
 export const forgotPassword = async (email) => {
   await sendPasswordResetEmail(auth, email);
 };
 
-const API = "http://localhost:5001/api/auth";
+const API = `${API_URL}/api/auth`;
 
 export const registerUser = async (user) => {
   const res = await axios.post(`${API}/register`, user);

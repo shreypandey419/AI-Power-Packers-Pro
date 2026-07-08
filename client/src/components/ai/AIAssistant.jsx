@@ -113,14 +113,20 @@ export default function AIAssistant() {
     }, [navigate]);
 
 
-    const sendMessage = useCallback(async (message = input) => {
-        if (!message.trim()) return;
+    const sendMessage = useCallback(async (message) => {
 
-        addMessage("user", message);
+      const text =
+        typeof message === "string"
+          ? message
+          : input;
+
+      if (!text.trim()) return;
+
+      addMessage("user", text);
 
         setInput("");
 
-        const command = message.toLowerCase();
+      const command = text.toLowerCase();
 
         if (
           command === "yes" ||
@@ -160,7 +166,7 @@ export default function AIAssistant() {
                 },
             ]);
 
-            const reply = await askGemini(message);
+            const reply = await askGemini(text);
 
             // Check if Gemini returned booking JSON
             try {

@@ -9,6 +9,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
+import API_URL from "../../config/api";
 
 export default function RevenueChart() {
 
@@ -20,7 +21,7 @@ export default function RevenueChart() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.get(
-        "http://localhost:5001/api/dashboard/revenue-chart",
+        `${API_URL}/api/dashboard/revenue-chart`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

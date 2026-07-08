@@ -16,6 +16,7 @@ import StatsCards from "../components/admin/StatsCards";
 import { getDashboardStats } from "../services/adminDashboardService";
 import NotificationBell from "../components/admin/NotificationBell";
 import RevenueChart from "../components/admin/RevenueChart";
+import API_URL from "../config/api";
 
 
 export default function Admin() {
@@ -49,7 +50,7 @@ export default function Admin() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.get(
-        `http://localhost:5001/api/leads?page=${currentPage}&limit=10&search=${encodeURIComponent(
+        `${API_URL}/api/leads?page=${currentPage}&limit=10&search=${encodeURIComponent(
           search
         )}&status=${status}&priority=${priority}&sort=${sort}`,
         {
@@ -103,7 +104,7 @@ export default function Admin() {
       const token = localStorage.getItem("adminToken");
 
       await axios.put(
-        `http://localhost:5001/api/leads/${id}/status`,
+        `${API_URL}/api/leads/${id}/status`,
         { status },
         {
           headers: {
@@ -135,7 +136,7 @@ export default function Admin() {
       const token = localStorage.getItem("adminToken");
 
       await axios.delete(
-        `http://localhost:5001/api/leads/${id}`,
+        `${API_URL}/api/leads/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -186,7 +187,7 @@ export default function Admin() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.get(
-        "http://localhost:5001/api/leads/export/excel",
+        `${API_URL}/api/leads/export/excel`,
         {
           responseType: "blob",
           headers: {

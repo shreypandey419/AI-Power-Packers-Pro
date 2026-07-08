@@ -1,4 +1,6 @@
-const API = "http://localhost:5001/api/dashboard";
+import { API_URL } from "../config/api";
+
+const API = `${API_URL}/api/dashboard`;
 
 export const getDashboardStats = async () => {
   const token = localStorage.getItem("adminToken");

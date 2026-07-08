@@ -7,6 +7,7 @@ import {
   BadgeDollarSign,
   Headphones,
 } from "lucide-react";
+import API_URL from "../../config/api";
 
 export default function QuoteForm() {
   const [form, setForm] = useState({
@@ -85,7 +86,7 @@ export default function QuoteForm() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5001/api/leads",
+        `${API_URL}/api/leads`,
         {
           name,
           phone,

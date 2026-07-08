@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import QuotationHistory from "./QuotationHistory";
+import API_URL from "../../config/api";
 
 export default function EditLeadModal({
   lead,
@@ -29,7 +30,7 @@ export default function EditLeadModal({
       const token = localStorage.getItem("adminToken");
 
       await axios.put(
-        `http://localhost:5001/api/leads/${lead._id}`,
+        `${API_URL}/api/leads/${lead._id}`,
         form,
         {
           headers: {

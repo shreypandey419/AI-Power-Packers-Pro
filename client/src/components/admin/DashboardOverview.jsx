@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_URL from "../../config/api";
 
 export default function DashboardOverview() {
   const [recentLeads, setRecentLeads] = useState([]);
@@ -11,7 +12,7 @@ export default function DashboardOverview() {
     const token = localStorage.getItem("adminToken");
 
     const res = await axios.get(
-      "http://localhost:5001/api/dashboard/overview",
+      `${API_URL}/api/dashboard/overview`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

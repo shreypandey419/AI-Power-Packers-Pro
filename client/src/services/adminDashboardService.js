@@ -1,6 +1,7 @@
 import axios from "axios";
+import { API_URL } from "../config/api";
 
-const API = "http://localhost:5001/api/admin";
+const API = `${API_URL}/api/admin`;
 
 const getToken = () => ({
   headers: {

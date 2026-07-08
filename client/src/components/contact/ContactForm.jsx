@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Send } from "lucide-react";
 import toast from "react-hot-toast";
+import API_URL from "../../config/api";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -33,7 +34,7 @@ export default function ContactForm() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5001/api/contact",
+        `${API_URL}/api/contact`,
         form
       );
 
